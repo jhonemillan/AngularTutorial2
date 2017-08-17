@@ -1,7 +1,7 @@
 const User = require('../models/user.js');
 const express =require('express');
 const router = express.Router();
-
+const jwt = require('jsonwebtoken');
 
 
      router.post('/register', (req, res) => {
@@ -78,13 +78,52 @@ const router = express.Router();
               if(!validPassword){
                 res.json({success: false, message: 'invalid password'});
               }else{
-                res.json({success: true, message: 'logged'});
+                const token = jwt.sign({userId: user._id},'keyjem',{ expiresIn: '24h'});
+                res.json({success: true, message: 'logged', token: token});
               }
             }
           }
         });
       }
     }
+  });
+
+
+
+  //todas las rutas que se usen despues de este middleware usaran los headers
+  //lo que quiere decir que todas las rutas que se usen despues son las que llevan
+  //autenticacion.
+  router.use((req, res, next)=>{
+    const token = req.headers['authorization'];//el nombre authorization es simplemente el que se le dio en el servicio para crear el header
+    if(!token){
+      res.json({
+        success: false,
+        message: 'no token'
+      });
+    }else{
+      jwt.verify(token, 'keyjem', (err, decoded) =>{
+        if(err){
+          res.json({success: false, message: 'Token invalid' + err});
+        }else{
+          req.decoded = decoded; 
+          next();
+        }
+      })
+    }
+  });
+
+  router.get('/profile',(req, res)=>{
+    User.findOne({_id: req.decoded.userId}).select('username email').exec((err, user)=>{
+      if(err){
+        res.json({success: false, message: err});
+      }else{
+        if(!user){
+          res.json({success: false, message: 'user not found'});
+        }else{
+          res.json({success: true, user: user});
+        }
+      }
+    })
   });
 
 
