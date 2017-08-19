@@ -17,6 +17,7 @@ const router = express.Router(); // Creates a new router object.
 const mongoose = require('mongoose'); // Node Tool for MongoDB
 const path = require('path'); // NodeJS Package for file paths
 const authentication = require('./routes/auth'); // Import Authentication Routes
+const blog = require('./routes/blog');
 const bodyParser = require('body-parser'); // Parse incoming request bodies in a middleware before your handlers, available under the req.body property.
 const cors = require('cors'); // CORS is a node.js package for providing a Connect/Express middleware that can be used to enable CORS with various options.
 //const port = process.env.PORT || 8080; // Allows heroku to set port
@@ -44,12 +45,13 @@ app.use(cors(corOptions)); // Allows cross origin in development only
 app.use(bodyParser.urlencoded({ extended: false })); // parse application/x-www-form-urlencoded
 app.use(bodyParser.json()); // parse application/json
 //app.use(express.static(__dirname + '/public')); // Provide static directory for frontend
-app.use('/authentication', authentication); // Use Authentication routes in application
-
 app.use(express.static(__dirname + '/client/dist/'));
+app.use('/authentication', authentication); // Use Authentication routes in application
+app.use('/blogs', blog);
+
 
 app.get('*', function (req, res) {
-  res.sendfile(path.join(__dirname + '/client/dist/index.html'));
+  res.sendFile(path.join(__dirname + '/client/dist/index.html'));
 });
 
 app.listen(3000, function () {

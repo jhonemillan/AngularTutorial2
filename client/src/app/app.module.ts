@@ -1,3 +1,4 @@
+import { BlogService } from './services/blog.service';
 import { NoAuthGuard } from './guards/noauth.guard';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthService } from './services/auth.service';
@@ -9,13 +10,13 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { RegisterComponent } from './components/register/register.component';
-import { ReactiveFormsModule } from '@angular/forms';  // <-- #1 import module
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';  // <-- #1 import module
 import { HttpModule } from "@angular/http";
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { BlogComponent } from './components/blog/blog.component';
 
-
+ 
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,9 +33,10 @@ import { BlogComponent } from './components/blog/blog.component';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpModule,
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
-  providers: [AuthService, AuthGuard, NoAuthGuard],
+  providers: [AuthService, AuthGuard, NoAuthGuard, BlogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

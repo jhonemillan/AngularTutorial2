@@ -9,7 +9,7 @@
     <ul class="nav navbar-nav navbar-right">
       <li *ngIf="isLogged()"><a routerLink='/dashboard'>Dashboard</a></li>
       <li *ngIf="isLogged()"><a routerLink='/profile'>Profile</a></li>
-      <li *ngIf="isLogged()"><a routerLink='/blog'>Blog</a></li>         
+      <li *ngIf="isLogged()"><a routerLink='/blogs'>Blog</a></li>         
       <li *ngIf="isLogged()"><a href="#" (click)="onLogoutClick()">Logout</a></li>
       <li *ngIf="!isLogged()"><a routerLink ="/login">Login</a></li>
     </ul>

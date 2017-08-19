@@ -9,7 +9,8 @@ const jwt = require('jsonwebtoken');
        let user = new User({
             email: req.body.email,
             username: req.body.username,
-            password: req.body.password
+            password: req.body.password,
+            creationDate: new Date()
           });
 
       //  user.save((err) => {

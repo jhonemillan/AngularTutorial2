@@ -16,7 +16,7 @@ const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent, canActivate: [NoAuthGuard]},
   { path: 'login', component: LoginComponent, canActivate: [NoAuthGuard]},
   { path: 'profile' , component: ProfileComponent, canActivate: [AuthGuard] },
-  { path: 'blog' , component: BlogComponent, canActivate: [AuthGuard] },
+  { path: 'blogs' , component: BlogComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: '' }
 ];  
 
