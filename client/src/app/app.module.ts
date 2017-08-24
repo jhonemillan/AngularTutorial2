@@ -1,3 +1,4 @@
+import { ImagesService } from './services/images.service';
 import { BlogService } from './services/blog.service';
 import { NoAuthGuard } from './guards/noauth.guard';
 import { AuthGuard } from './guards/auth.guard';
@@ -15,6 +16,8 @@ import { HttpModule } from "@angular/http";
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { BlogComponent } from './components/blog/blog.component';
+import { ImagesListComponent } from './components/images-list/images-list.component';
+import { MasonryModule } from 'angular2-masonry';
 
  
 @NgModule({
@@ -26,7 +29,8 @@ import { BlogComponent } from './components/blog/blog.component';
     RegisterComponent,
     LoginComponent,
     ProfileComponent,
-    BlogComponent
+    BlogComponent,
+    ImagesListComponent
   ],
   imports: [
     BrowserModule,
@@ -34,9 +38,10 @@ import { BlogComponent } from './components/blog/blog.component';
     ReactiveFormsModule,
     HttpModule,
     BrowserModule,
-    FormsModule
+    FormsModule,
+    MasonryModule
   ],
-  providers: [AuthService, AuthGuard, NoAuthGuard, BlogService],
+  providers: [AuthService, AuthGuard, NoAuthGuard, BlogService, ImagesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

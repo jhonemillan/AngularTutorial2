@@ -1,3 +1,4 @@
+import { ImagesListComponent } from './components/images-list/images-list.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { NoAuthGuard } from './guards/noauth.guard';
 import { AuthGuard } from './guards/auth.guard';
@@ -17,6 +18,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [NoAuthGuard]},
   { path: 'profile' , component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'blogs' , component: BlogComponent, canActivate: [AuthGuard] },
+  { path: 'images', component: ImagesListComponent, canActivate: [AuthGuard]},
   { path: '**', redirectTo: '' }
 ];  
 
