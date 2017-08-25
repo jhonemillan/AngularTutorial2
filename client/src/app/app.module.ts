@@ -18,7 +18,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { ImagesListComponent } from './components/images-list/images-list.component';
 import { MasonryModule } from 'angular2-masonry';
-
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MdGridListModule, MdInputModule} from '@angular/material';
  
 @NgModule({
   declarations: [
@@ -39,7 +40,10 @@ import { MasonryModule } from 'angular2-masonry';
     HttpModule,
     BrowserModule,
     FormsModule,
-    MasonryModule
+    MasonryModule,
+    BrowserAnimationsModule,
+    MdGridListModule,
+    MdInputModule
   ],
   providers: [AuthService, AuthGuard, NoAuthGuard, BlogService, ImagesService],
   bootstrap: [AppComponent]

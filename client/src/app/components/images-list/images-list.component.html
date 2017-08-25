@@ -5,22 +5,26 @@
 </div>
 <hr>
 <div class="input-group">
-    <input type="text" class="form-control" [(ngModel)] = "searchQuery" placeholder="Search for...">
+    <input type="text" class="form-control" [(ngModel)] = "searchQuery" placeholder="Search for...">   
     <span class="input-group-btn">
       <button class="btn btn-default" (click) = "searchImages(searchQuery)" type="button">Go!</button>
     </span>
   </div><!-- /input-group -->
+  <hr>
+  <!-- <nav aria-label="...">
+        <ul class="pager">
+          <li class="previous"><a href="" (click)="DecrementPage($event)"><span aria-hidden="true">&larr;</span> Older</a></li>
+          <li class="next"><a href="" (click)="IncrementPage($event)">Newer <span aria-hidden="true">&rarr;</span></a></li>
+        </ul>
+      </nav> -->
 
-  <!-- <masonry [useImagesLoaded] = "true">
-        <masonry-brick class="image-container" *ngFor="let image of images"><img src="{{image.webformatURL }}" alt="">
-
-        </masonry-brick>
-  </masonry> -->
-<div *ngFor="let image of images" class="row">
-    <div class="col-xs-6 col-md-3">
-        <div class="thumbnail">
+  <md-grid-list cols="3" md-cols-gt-sm="4" 
+                md-cols-sm="2" md-cols="1" 
+                gutterSize="7px" 
+                md-row-height="fit"
+                rowHeight="200px">
+        <md-grid-tile *ngFor="let image of images" >
                 <img src="{{image.webformatURL }}" alt="">
-        </div>      
-    </div>
-    
-  </div>
+        </md-grid-tile>
+      </md-grid-list>
+
