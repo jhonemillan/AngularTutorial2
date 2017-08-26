@@ -7,16 +7,17 @@
 <div class="input-group">
     <input type="text" class="form-control" [(ngModel)] = "searchQuery" placeholder="Search for...">   
     <span class="input-group-btn">
-      <button class="btn btn-default" (click) = "searchImages(searchQuery)" type="button">Go!</button>
+      <button class="btn btn-default" (click) = "searchImages(searchQuery, 1)" type="button">Go!</button>
     </span>
   </div><!-- /input-group -->
   <hr>
-  <!-- <nav aria-label="...">
+  <nav aria-label="...">
         <ul class="pager">
-          <li class="previous"><a href="" (click)="DecrementPage($event)"><span aria-hidden="true">&larr;</span> Older</a></li>
-          <li class="next"><a href="" (click)="IncrementPage($event)">Newer <span aria-hidden="true">&rarr;</span></a></li>
+          <li class="previous"> <a  href="#" (click)="DecrementPage($event)">Older<span aria-hidden="true">&larr;</span></a> </li>
+          <li class="next"><a  href="#" (click)="IncrementPage($event)">Newer <span aria-hidden="true">&rarr;</span></a></li>
+        
         </ul>
-      </nav> -->
+      </nav>
 
   <md-grid-list cols="3" md-cols-gt-sm="4" 
                 md-cols-sm="2" md-cols="1" 

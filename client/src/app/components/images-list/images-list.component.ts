@@ -24,22 +24,26 @@ export class ImagesListComponent implements OnInit {
 
   searchImages(query: string, page: number){
     this.currentQuery = query;
-    return this.imageService.getImages(query).subscribe(
+    return this.imageService.getImages(query, page).subscribe(
       data=>this.setImageList(data),
       error => console.log(error),
-      () => console.log('operation complete')
+      () => console.log('operation complete' + page)
     );
   }
 
   IncrementPage(event){
+    event.preventDefault();
   this.currentPage = this.currentPage + 1;
+  console.log('increment page' + this.currentPage);
   this.searchImages(this.currentQuery, this.currentPage);
+  
   }
 
   DecrementPage(event){
     event.preventDefault();
     if(this.currentPage > 1){
       this.currentPage = this.currentPage - 1;
+      console.log(this.currentPage);
     }
 
     this.searchImages(this.currentQuery, this.currentPage);
