@@ -12,6 +12,7 @@ export class ImagesListComponent implements OnInit {
   images: any[];
   currentPage: number = 1;
   currentQuery;
+  searchQuery;
 
   constructor(private imageService: ImagesService) { }
 
