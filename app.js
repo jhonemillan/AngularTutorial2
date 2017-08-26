@@ -20,7 +20,7 @@ const authentication = require('./routes/auth'); // Import Authentication Routes
 const blog = require('./routes/blog');
 const bodyParser = require('body-parser'); // Parse incoming request bodies in a middleware before your handlers, available under the req.body property.
 const cors = require('cors'); // CORS is a node.js package for providing a Connect/Express middleware that can be used to enable CORS with various options.
-//const port = process.env.PORT || 8080; // Allows heroku to set port
+const port = process.env.PORT || 3000; // Allows heroku to set port
 
 mongoose.Promise = global.Promise;
 const db = "mongodb://developer:developer@ds137207.mlab.com:37207/videoplayer";
@@ -45,15 +45,15 @@ app.use(cors(corOptions)); // Allows cross origin in development only
 app.use(bodyParser.urlencoded({ extended: false })); // parse application/x-www-form-urlencoded
 app.use(bodyParser.json()); // parse application/json
 //app.use(express.static(__dirname + '/public')); // Provide static directory for frontend
-app.use(express.static(__dirname + '/client/dist/'));
+app.use(express.static(__dirname + '/public/'));
 app.use('/authentication', authentication); // Use Authentication routes in application
 app.use('/blogs', blog);
 
 
 app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname + '/client/dist/index.html'));
+  res.sendFile(path.join(__dirname + '/public/index.html'));
 });
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
+app.listen(port, function () {
+  console.log('Example app listening on port !' + port);
 });
